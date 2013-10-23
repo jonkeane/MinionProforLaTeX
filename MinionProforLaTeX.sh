@@ -7,7 +7,7 @@
 ###############################
 
 ### establish where your personal tex tree is. By default this directory is not created with MacTeX, but this is where it should be (cf http://www.tug.org/mactex/2009/faq/#qm04)
-texmf_folder=~/Library/texmf/
+texmf_folder=~/Library/texmf
 
 ### Establish a working directory (these values can be changed freely)
 cd ~
@@ -34,8 +34,8 @@ encoding=enc-1.000.zip
 
 ###### Install MnSymbol for minion-like symbols
 
-### grab and unzip the mnsymbol archive (nb these URLs may be outdated, check ctan for the most up to date locations)
-curl http://www.ctan.org/pub/tex-archive/fonts/mnsymbol.zip > mnsymbol.zip
+### grab and unzip the mnsymbol archive -L follows redirection, -O downloads the file.
+curl -L -O http://mirrors.ctan.org/fonts/mnsymbol.zip
 unzip mnsymbol.zip
 cd mnsymbol/tex
 
@@ -105,10 +105,10 @@ rm -Rf $texmf_folder/fonts/vf/adobe/MinionPro
 rm -Rf $texmf_folder/doc/latex/MinionPro
 rm -Rf $texmf_folder/fonts/map/dvips/MinionPro
 rm -Rf $texmf_folder/tex/latex/MinionPro
-curl http://www.ctan.org/pub/tex-archive/fonts/minionpro/$encoding > $encoding
-curl http://www.ctan.org/pub/tex-archive/fonts/minionpro/metrics-full.zip > metrics-full.zip
-curl http://www.ctan.org/pub/tex-archive/fonts/minionpro/metrics-base.zip > metrics-base.zip
-curl http://www.ctan.org/pub/tex-archive/fonts/minionpro/metrics-opticals.zip > metrics-opticals.zip
+curl -L -O http://mirrors.ctan.org/fonts/minionpro/$encoding
+curl -L -O http://mirrors.ctan.org/fonts/minionpro/metrics-full.zip 
+curl -L -O http://mirrors.ctan.org/fonts/minionpro/metrics-base.zip
+curl -L -O http://mirrors.ctan.org/fonts/minionpro/metrics-opticals.zip
 cd $texmf_folder
 unzip $workdir/metrics-base.zip
 unzip $workdir/metrics-full.zip
