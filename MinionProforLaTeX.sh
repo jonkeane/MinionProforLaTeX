@@ -9,15 +9,15 @@
 ### establish where your personal tex tree is. By default this directory is not created with MacTeX, but this is where it should be (cf http://www.tug.org/mactex/2009/faq/#qm04)
 texmf_folder=~/Library/texmf
 
+### establish where your minion pro font files are located (this is set to the minionpro folder in the current directory)
+minion_folder=`PWD`/minionpro/
+
 ### Establish a working directory (these values can be changed freely)
 cd ~
 rm -Rf minionprotemp
 mkdir minionprotemp
 cd minionprotemp
 workdir=$PWD
-
-### establish where your minion pro font files are located (this is set to the minionpro folder in the current directory)
-minion_folder=`PWD`/minionpro/
 
 ### determine which version of Minion Pro you have and select the appropriate encodings file:
 #   The MinionPro distribution is split into several archives. Which of them you need depends on the version of the fonts you have installed. We support three different versions of MinionPro:
@@ -69,7 +69,7 @@ cp pfb/*.pfb $texmf_folder/fonts/type1/public/MnSymbol/
 cp tfm/* $texmf_folder/fonts/tfm/public/MnSymbol/
 
 ### install map files (from your personal tree, sudo updmap-sys if you are installing this system wide)
-updmap --enable MixedMap $texmf_folder/fonts/map/dvips/MnSymbol/MnSymbol.map
+updmap --enable MixedMap MnSymbol.map
 
 
 
@@ -78,7 +78,7 @@ updmap --enable MixedMap $texmf_folder/fonts/map/dvips/MnSymbol/MnSymbol.map
 cd $workdir
 
 ### grab and unzip the MinionPro archive
-curl http://www.ctan.org/pub/tex-archive/fonts/minionpro/scripts.zip > scripts.zip
+curl -L -O http://mirrors.ctan.org/fonts/minionpro/scripts.zip
 rm -Rf minionpro-scripts
 mkdir minionpro-scripts
 cd minionpro-scripts
@@ -116,8 +116,8 @@ unzip $workdir/metrics-opticals.zip
 unzip $workdir/$encoding
 
 ### install map files 
-updmap --enable MixedMap  $texmf_folder/fonts/map/dvips/MinionPro/MinionPro.map
+updmap --enable MixedMap MinionPro.map
 
 ### cleanup tempfiles
-cd ~/Desktop
+cd ~
 rm -Rf minionprotemp
